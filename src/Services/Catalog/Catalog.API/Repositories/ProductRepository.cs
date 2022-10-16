@@ -36,7 +36,7 @@ namespace Catalog.API.Repositories
             return deleteResult.IsAcknowledged && deleteResult.DeletedCount > 0;
         }
 
-        public async Task<IEnumerable<Product>> GetProductByCategory(string category)
+        public async Task<IEnumerable<Product>> GetProductsByCategory(string category)
         {
             var filter = Builders<Product>.Filter.Eq(p => p.Category, category);
 

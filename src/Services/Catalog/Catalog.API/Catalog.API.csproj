@@ -13,10 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Remove="C:\Users\User\.nuget\packages\mongodb.driver.core\2.17.1\build\..\runtimes\osx\native\libsnappy64.dylib" />
   </ItemGroup>
 
