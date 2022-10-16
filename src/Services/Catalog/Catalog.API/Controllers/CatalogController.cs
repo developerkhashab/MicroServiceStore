@@ -58,6 +58,7 @@ namespace Catalog.API.Controllers
             return Ok(products);
         }
 
+        [Route("[action]", Name = "CreateProduct")]
         [HttpPost]
         [ProducesResponseType(typeof(Product), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<Product>> CreateProduct([FromBody] Product product)
@@ -66,7 +67,7 @@ namespace Catalog.API.Controllers
             return CreatedAtRoute("GetProduct", new { id = product.Id }, product);
         }
 
-        [HttpPost]
+        [HttpPut]
         [ProducesResponseType(typeof(Product), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> UpdateProduct([FromBody] Product product)
         {
