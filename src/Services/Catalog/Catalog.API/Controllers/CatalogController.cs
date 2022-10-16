@@ -9,14 +9,24 @@ namespace Catalog.API.Controllers
     [Route("api/v1/[controller]")]
     public class CatalogController : ControllerBase
     {
+        #region Private ReadOnly
+
         private readonly IProductRepository _productRepository;
         private readonly ILogger<CatalogController> _logger;
+
+        #endregion
+
+        #region Constructor
 
         public CatalogController(IProductRepository productRepository, ILogger<CatalogController> logger)
         {
             _productRepository = productRepository;
             _logger = logger;
         }
+
+        #endregion
+
+        #region Actions
 
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<Product>), (int)HttpStatusCode.OK)]
@@ -63,11 +73,13 @@ namespace Catalog.API.Controllers
             return Ok(await _productRepository.UpdateProduct(product));
         }
 
-        [HttpDelete("{id:length(24)}", Name ="DeleteProduct")]
+        [HttpDelete("{id:length(24)}", Name = "DeleteProduct")]
         [ProducesResponseType(typeof(Product), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> DeleteProductById(string id)
         {
             return Ok(await _productRepository.DeleteProduct(id));
         }
+
+        #endregion        
     }
 }
